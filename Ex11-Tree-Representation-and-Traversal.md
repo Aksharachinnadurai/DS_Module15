@@ -20,40 +20,24 @@ RegisterNumber:  212223220004
 */
 ```
 ```
-structnode{ 
-int key;
-struct node*left, *right;
-};
-struct node* insert(struct node* node, int key)
+*struct node
 {
-if(node==NULL)
+int value;
+struct node*left_child, *right_child;
+};*/
+void display_postorder(struct node*root_node){ 
+if(root_node)
 {
-struct node*node=(struct node*)malloc(sizeof(struct node)); 
-node->key=key;
-node->left=NULL; 
-node->right=NULL; 
-return node;
-}
-else
-{
-struct node* cur; 
-if(key<=node->key)
-{
-cur=insert(node->left,key); 
-node->left=cur;
-}
-else
-{
-cur=insert(node->right,key); 
-node->right=cur;
-}
-returnnode;
+display_postorder(root_node->left_child); 
+display_postorder(root_node->right_child); 
+printf("%d\n",root_node->value);
 }
 }
 ```
 
 ## Output:
-![image](https://github.com/user-attachments/assets/55601004-5f09-457f-9fe4-c1ba648bae10)
+![image](https://github.com/user-attachments/assets/c3e66a9d-8ff2-4a49-8833-2083cb31782e)
+
 
 ## Result:
 Thus, the function to perform post order traversal of a binary tree is implemented successfully
